@@ -42,6 +42,26 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	<profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <active.profile>dev</active.profile>
+            </properties>
+        </profile>
+        <profile>
+            <id>sit</id>
+            <properties>
+                <active.profile>sit</active.profile>
+            </properties>
+        </profile>
+		<profile>
+            <id>prod</id>
+            <properties>
+                <active.profile>prod</active.profile>
+            </properties>
+        </profile>
+    </profiles>
 
 	<build>
 		<plugins>
@@ -51,5 +71,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 
 </project>
