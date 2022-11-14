@@ -1,0 +1,23 @@
+node {
+  try{
+    stages {
+        stage('git clone') {
+            steps {
+            git credentialsId: '3d22dc11-ce03-41a0-9dcc-9c17f5a36486', url: 'https://github.com/reddysudharshanreddy/dev-properties.git'
+            }
+        }
+        stage('builD') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+    } 
+     ... 
+  }
+  catch(err)
+  {
+    currentBuild.result ="FAILURE"
+    step([$class: 'Mailer', notifyUnstableEveryBuild:true, recipients:'', sendToIndividuals: true])
+    throw err
+  }
+}
